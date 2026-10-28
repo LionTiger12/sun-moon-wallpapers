@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Free cosy vector wallpapers for your iPhone lock screen. Places I've been, drawn in sun & moon.">
+<meta property="og:title" content="Sun & Moon Wallpapers">
+<meta property="og:description" content="Free cosy vector wallpapers for your iPhone. Places I've been, drawn in sun & moon.">
+<meta property="og:image" content="cosy-sky-thumb.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Sun &amp; Moon Wallpapers</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>\n:root {{ color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }}\nbody {{ margin: 0; }}\nimg {{ max-width: 100%; }}
+/* Layout: a dusk-coloured shop window. Retro-sun hero, then a phone-shaped gallery; tap opens a full-screen viewer. */
+:root {
+  --bg: #fbefe7;            /* apricot dawn */
+  --surface: #ffffff;
+  --ink: #2b1e2e;           /* plum ink */
+  --muted: #7a6670;
+  --line: #ecd8cc;
+  --sun-1: #fff3d6; --sun-2: #ffc96e; --sun-3: #f08a4b; --sun-4: #d9583d;
+  --accent: #c8502e;        /* rust */
+  --accent-ink: #ffffff;
+  --sheet: rgba(30, 20, 32, .92);
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1422; --surface: #271c2e; --ink: #f6e9df; --muted: #b8a3ad; --line: #3a2b42;
+    --accent: #ff9a5c; --accent-ink: #1c1422; --sheet: rgba(10, 6, 12, .94); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1422; --surface: #271c2e; --ink: #f6e9df; --muted: #b8a3ad; --line: #3a2b42;
+  --accent: #ff9a5c; --accent-ink: #1c1422; --sheet: rgba(10, 6, 12, .94); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 28px 56px; }
+
+/* ---------- hero ---------- */
+.hero { display: grid; justify-items: center; text-align: center; gap: 14px; padding-block: 12px 36px; }
+.sun {
+  width: min(46vw, 190px); aspect-ratio: 1; border-radius: 50%;
+  background: linear-gradient(var(--sun-1), var(--sun-2) 45%, var(--sun-3) 78%, var(--sun-4));
+  -webkit-mask: linear-gradient(#000 52%, transparent 52% 55%, #000 55% 62%, transparent 62% 66%, #000 66% 72%, transparent 72% 77.5%, #000 77.5% 82%, transparent 82% 88%, #000 88% 91%, transparent 91%);
+          mask: linear-gradient(#000 52%, transparent 52% 55%, #000 55% 62%, transparent 62% 66%, #000 66% 72%, transparent 72% 77.5%, #000 77.5% 82%, transparent 82% 88%, #000 88% 91%, transparent 91%);
+  filter: drop-shadow(0 10px 40px color-mix(in srgb, var(--sun-3) 45%, transparent));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sun { animation: rise 1.4s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { transform: translateY(24px); } to { transform: none; } }
+}
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.1rem, 8vw, 3.6rem); line-height: 1.02; letter-spacing: -.02em; margin: 6px 0 0; text-wrap: balance; }
+.tag { font-size: 1.08rem; color: var(--muted); margin: 0; max-width: 34ch; text-wrap: balance; }
+.facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; padding: 0; list-style: none; }
+.facts li { font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-variant-numeric: tabular-nums; }
+
+/* ---------- gallery ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 14px; }
+@media (min-width: 720px) { .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 28px 20px; } }
+.card { all: unset; cursor: pointer; display: grid; gap: 8px; min-width: 0; }
+.card:focus-visible .phone { outline: 3px solid var(--accent); outline-offset: 3px; }
+.phone {
+  position: relative; aspect-ratio: 1320 / 2868; max-width: 100%; border-radius: 22px; overflow: hidden;
+  background: var(--line); border: 4px solid #17111a;
+  box-shadow: 0 14px 30px -18px color-mix(in srgb, var(--ink) 70%, transparent);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.phone::after { content: ""; position: absolute; top: 6px; left: 50%; translate: -50% 0; width: 30%; height: 3.2%; border-radius: 99px; background: #17111a; }  /* dynamic island */
+@media (hover: hover) { .card:hover .phone { transform: translateY(-4px); box-shadow: 0 22px 34px -18px color-mix(in srgb, var(--ink) 75%, transparent); } }
+.meta { display: grid; gap: 1px; padding-inline: 2px; min-width: 0; }
+.meta b { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2; }
+.meta span { font-size: .82rem; color: var(--muted); line-height: 1.3; }
+
+/* ---------- how-to ---------- */
+.how { margin-top: 56px; display: grid; gap: 14px; max-width: 640px; margin-inline: auto; }
+.how h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin: 0; text-align: center; }
+.how ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.how li::marker { color: var(--accent); font-weight: 700; }
+footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: .85rem; }
+
+/* ---------- viewer ---------- */
+.viewer {
+  position: fixed; inset: 0; z-index: 50; background: var(--sheet); display: grid; grid-template-rows: auto 1fr auto;
+  padding: calc(env(safe-area-inset-top, 0px) + 10px) max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 16px) max(16px, env(safe-area-inset-left, 0px));
+  color: #f6e9df;
+}
+.viewer .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.viewer .top b { font-family: var(--font-display); font-size: 1.15rem; }
+.icon-btn { all: unset; cursor: pointer; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.12); font-size: 1.4rem; line-height: 1; color: #f6e9df; }
+.icon-btn:focus-visible { outline: 2px solid #ffc96e; }
+.stage { position: relative; min-height: 0; }
+.stage img { position: absolute; inset: 12px 0; margin: auto; max-height: calc(100% - 24px); max-width: 100%; border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,.5); -webkit-touch-callout: default; }
+.bar { display: grid; gap: 10px; justify-items: center; text-align: center; }
+.dl { all: unset; cursor: pointer; background: #ffc96e; color: #2b1e2e; font-weight: 600; padding: 12px 26px; border-radius: 999px; font-size: 1rem; }
+.dl:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.dl[disabled] { opacity: .6; cursor: default; }
+.hint { font-size: .85rem; color: #d8c4cc; margin: 0; max-width: 36ch; }
+.nav { display: flex; gap: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="sun" role="img" aria-label="Striped retro sun"></div>
+    <h1>Sun &amp; Moon<br>Wallpapers</h1>
+    <p class="tag">Places I've been. Drawn in sun &amp; moon. Free for your iPhone lock screen.</p>
+    <ul class="facts">
+      <li id="count">21 wallpapers</li>
+      <li>1320 × 2868 px</li>
+      <li>Free</li>
+    </ul>
+  </header>
+
+  <main class="grid" id="grid" aria-label="Wallpapers"></main>
+
+  <section class="how" aria-labelledby="how-title">
+    <h2 id="how-title">Set it as your wallpaper</h2>
+    <ol>
+      <li>Tap a wallpaper to open it full size.</li>
+      <li>Tap <b>Download</b>, or press and hold the image and choose <b>Add to Photos</b>.</li>
+      <li>Open <b>Photos</b>, tap the share icon and pick <b>Use as Wallpaper</b>.</li>
+      <li>The sky at the top is left calm on purpose, so your clock stays readable.</li>
+    </ol>
+  </section>
+
+  <footer>Made with a striped sun · personal use only</footer>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="v-title">
+  <div class="top">
+    <button class="icon-btn" id="prev" aria-label="Previous wallpaper">‹</button>
+    <b id="v-title"></b>
+    <div class="nav">
+      <button class="icon-btn" id="next" aria-label="Next wallpaper">›</button>
+      <button class="icon-btn" id="close" aria-label="Close">×</button>
+    </div>
+  </div>
+  <div class="stage"><img id="v-img" alt=""></div>
+  <div class="bar">
+    <a class="dl" id="dl" href="#" download hidden>Download</a>
+    <p class="hint" id="hint">Press and hold the image, then choose “Add to Photos”.</p>
+  </div>
+</div>
+
+<script>
+const ITEMS = [{"slug": "cosy-sky", "title": "Cosy Sky", "sub": "Retro jet over a sci-fi city", "kind": "sun"}, {"slug": "white-bay", "title": "White Bay", "sub": "Sailboat below a hillside town", "kind": "sun"}, {"slug": "old-town", "title": "Old Town", "sub": "Rooftops and castle walls", "kind": "sun"}, {"slug": "pine-cove", "title": "Pine Cove", "sub": "Umbrella pines over a quiet cove", "kind": "sun"}, {"slug": "final-approach", "title": "Final Approach", "sub": "Runway on the hill", "kind": "sun"}, {"slug": "riverside-night", "title": "Riverside Night", "sub": "Lanterns and a striped moon", "kind": "moon"}, {"slug": "the-pier", "title": "The Pier", "sub": "Harbour wall towards the old town", "kind": "sun"}, {"slug": "danube", "title": "Danube", "sub": "Budapest, two bridges", "kind": "sun"}, {"slug": "acropolis", "title": "Acropolis", "sub": "Athens, through the pines", "kind": "sun"}, {"slug": "golden-lake", "title": "Golden Lake", "sub": "Sunset behind the tree", "kind": "sun"}, {"slug": "pastel-rooftops", "title": "Pastel Rooftops", "sub": "Palms and a southern evening", "kind": "sun"}, {"slug": "rapeseed", "title": "Rapeseed", "sub": "Spring in yellow", "kind": "sun"}, {"slug": "gingham-coffee", "title": "Gingham Coffee", "sub": "Cappuccino from above", "kind": "sun"}, {"slug": "plant-bar", "title": "Plant Bar", "sub": "Sun through the arched window", "kind": "sun"}, {"slug": "chateau", "title": "Ch\u00e2teau", "sub": "Autumn trees, evening light", "kind": "sun"}, {"slug": "lake-town", "title": "Lake Town", "sub": "Brick church on the water", "kind": "sun"}, {"slug": "anchored", "title": "Anchored", "sub": "Two yachts, one sun", "kind": "sun"}, {"slug": "coffee-bordeaux", "title": "Coffee \u00b7 Bordeaux", "sub": "Steam in front of the sun", "kind": "sun"}, {"slug": "coffee-terracotta", "title": "Coffee \u00b7 Terracotta", "sub": "Steam in front of the sun", "kind": "sun"}, {"slug": "coffee-aubergine", "title": "Coffee \u00b7 Aubergine", "sub": "Steam in front of the sun", "kind": "sun"}, {"slug": "coffee-anthracite", "title": "Coffee \u00b7 Anthracite", "sub": "Steam in front of the sun", "kind": "sun"}];
+const grid = document.getElementById('grid');
+document.getElementById('count').textContent = ITEMS.length + ' wallpapers';
+ITEMS.forEach((it, i) => {
+  const b = document.createElement('button');
+  b.className = 'card';
+  b.setAttribute('aria-label', 'Open ' + it.title);
+  b.innerHTML = `<div class="phone"><img src="${it.slug}-thumb.jpg" alt="${it.title}: ${it.sub}" loading="lazy" width="360" height="782"></div>
+    <div class="meta"><b>${it.title}${it.kind === 'moon' ? ' ☾' : ''}</b><span>${it.sub}</span></div>`;
+  b.addEventListener('click', () => open(i));
+  grid.appendChild(b);
+});
+
+const viewer = document.getElementById('viewer'), vImg = document.getElementById('v-img'), vTitle = document.getElementById('v-title');
+const dlBtn = document.getElementById('dl'), hint = document.getElementById('hint');
+let cur = 0, lastFocus = null;
+
+function open(i) {
+  cur = (i + ITEMS.length) % ITEMS.length;
+  const it = ITEMS[cur];
+  vImg.src = it.slug + '.jpg';
+  vImg.alt = it.title + ' wallpaper, full size';
+  vTitle.textContent = it.title;
+  dlBtn.href = it.slug + '.jpg';
+  dlBtn.setAttribute('download', 'Wallpaper_' + it.title.replace(/[^A-Za-z0-9]+/g, '_') + '.jpg');
+  hint.textContent = 'Or press and hold the image, then choose “Add to Photos”.';
+  if (viewer.hidden) { lastFocus = document.activeElement; viewer.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('close').focus(); }
+}
+function close() { viewer.hidden = true; document.body.style.overflow = ''; lastFocus && lastFocus.focus(); }
+document.getElementById('close').onclick = close;
+document.getElementById('prev').onclick = () => open(cur - 1);
+document.getElementById('next').onclick = () => open(cur + 1);
+document.addEventListener('keydown', e => {
+  if (viewer.hidden) return;
+  if (e.key === 'Escape') close();
+  if (e.key === 'ArrowLeft') open(cur - 1);
+  if (e.key === 'ArrowRight') open(cur + 1);
+});
+// swipe between wallpapers
+let sx = null;
+vImg.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+vImg.addEventListener('touchend', e => {
+  if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null;
+  if (Math.abs(dx) > 60) open(cur + (dx < 0 ? 1 : -1));
+});
+
+// Plain download link (works on GitHub Pages; iPhone Safari saves to Files, long-press saves to Photos)
+dlBtn.hidden = false;
+</script>
+</body>
+</html>
